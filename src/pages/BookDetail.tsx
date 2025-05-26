@@ -1,6 +1,8 @@
+
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CommentSection from '@/components/CommentSection';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Calendar, Eye, Heart, Share2, BookOpen } from 'lucide-react';
@@ -110,12 +112,12 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
 
   if (!book) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-amber-50">
         <Header />
         <div className="pt-32 pb-20 text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Karya Tidak Ditemukan</h1>
+          <h1 className="text-4xl font-bold text-amber-800 mb-4">Karya Tidak Ditemukan</h1>
           <Link to="/works">
-            <Button>Lihat Semua Karya</Button>
+            <Button className="bg-gradient-primary hover:opacity-90">Lihat Semua Karya</Button>
           </Link>
         </div>
         <Footer />
@@ -124,7 +126,7 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-amber-50">
       <Header />
       
       {/* Hero Section */}
@@ -138,7 +140,7 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
             
             <div className="text-center text-white">
               <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
-                book.type === 'novel' ? 'bg-purple-500' : 'bg-pink-500'
+                book.type === 'novel' ? 'bg-amber-700' : 'bg-amber-600'
               }`}>
                 {book.type === 'novel' ? 'Novel' : 'Cerpen'}
               </span>
@@ -172,7 +174,8 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
           <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-4 gap-8">
               {/* Main Content */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 space-y-8">
+                {/* Story Content */}
                 <Card className="shadow-xl">
                   <CardContent className="p-8">
                     <div className="prose prose-lg max-w-none">
@@ -182,6 +185,9 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Comments Section */}
+                <CommentSection bookId={id || ''} />
               </div>
 
               {/* Sidebar */}
@@ -194,11 +200,11 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
                         <Heart className="h-4 w-4 mr-2" />
                         Suka
                       </Button>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="outline" className="w-full border-amber-200 text-amber-700 hover:bg-amber-50">
                         <Share2 className="h-4 w-4 mr-2" />
                         Bagikan
                       </Button>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="outline" className="w-full border-amber-200 text-amber-700 hover:bg-amber-50">
                         <BookOpen className="h-4 w-4 mr-2" />
                         Simpan
                       </Button>
@@ -209,18 +215,18 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
                 {/* Author Info */}
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4">Tentang Penulis</h3>
+                    <h3 className="font-semibold mb-4 text-amber-800">Tentang Penulis</h3>
                     <div className="text-center">
                       <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                         <span className="text-white text-xl font-bold">M</span>
                       </div>
-                      <h4 className="font-semibold">Mochatsu</h4>
-                      <p className="text-sm text-gray-600 mb-4">Penulis Novel & Cerpen</p>
+                      <h4 className="font-semibold text-amber-800">Mochatsu</h4>
+                      <p className="text-sm text-amber-600 mb-4">Penulis Novel & Cerpen</p>
                       <a 
                         href="https://www.wattpad.com/user/Mochatsu" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-purple-600 hover:text-purple-800 text-sm transition-colors duration-300"
+                        className="text-amber-700 hover:text-amber-900 text-sm transition-colors duration-300"
                       >
                         @Mochatsu di Wattpad
                       </a>
@@ -231,19 +237,19 @@ Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang
                 {/* Reading Stats */}
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4">Statistik</h3>
+                    <h3 className="font-semibold mb-4 text-amber-800">Statistik</h3>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Pembaca</span>
-                        <span className="font-semibold">{book.views}</span>
+                        <span className="text-amber-600">Pembaca</span>
+                        <span className="font-semibold text-amber-800">{book.views}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Disukai</span>
-                        <span className="font-semibold">{book.likes}</span>
+                        <span className="text-amber-600">Disukai</span>
+                        <span className="font-semibold text-amber-800">{book.likes}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Komentar</span>
-                        <span className="font-semibold">23</span>
+                        <span className="text-amber-600">Komentar</span>
+                        <span className="font-semibold text-amber-800">23</span>
                       </div>
                     </div>
                   </CardContent>

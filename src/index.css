@@ -115,7 +115,7 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
-  .glass-effect-brown {
+  .glass-effect-amber {
     background: rgba(254, 243, 199, 0.85);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(217, 119, 6, 0.2);
