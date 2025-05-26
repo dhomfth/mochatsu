@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, BookOpen, Home, User, Mail } from 'lucide-react';
+import { Menu, X, BookOpen, Home, User, Mail, Book } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +29,13 @@ const Header = () => {
             >
               <Home className="h-4 w-4" />
               <span>Beranda</span>
+            </Link>
+            <Link 
+              to="/works" 
+              className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors duration-300"
+            >
+              <Book className="h-4 w-4" />
+              <span>Karya</span>
             </Link>
             <Link 
               to="/about" 
@@ -66,6 +73,14 @@ const Header = () => {
               >
                 <Home className="h-4 w-4" />
                 <span>Beranda</span>
+              </Link>
+              <Link 
+                to="/works" 
+                className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors duration-300"
+                onClick={toggleMenu}
+              >
+                <Book className="h-4 w-4" />
+                <span>Karya</span>
               </Link>
               <Link 
                 to="/about" 

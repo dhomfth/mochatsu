@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,7 +9,7 @@ import { Link } from 'react-router-dom';
 const BookDetail = () => {
   const { id } = useParams();
 
-  // Sample book data - in real app, this would come from API
+  // Data lengkap untuk semua karya tulis
   const bookData = {
     '1': {
       title: 'Jejak Langkah di Musim Hujan',
@@ -38,8 +37,71 @@ Tanpa berkata apa-apa lagi, mereka saling berlari menghampiri. Pelukan hangat di
 
 "Dan aku tidak akan membiarkanmu pergi lagi," jawab Andi sambil memeluknya semakin erat.
 
-Hujan berhenti. Langit mulai cerah. Dan cinta mereka, sekali lagi, menemukan jalannya pulang.`,
+Hujan berhenti. Langit mulai cerah. Dan cinta mereka, sekali lagi, menemukan jalannya pulang.
+
+Keesokan harinya, mereka duduk bersama di kafe kecil tempat mereka biasa bertemu dulu. Sarah menceritakan perjalanan hidupnya selama tiga tahun terakhir, bagaimana ia harus pindah ke luar negeri karena pekerjaan ayahnya, bagaimana ia tidak pernah sehari pun melupakan Andi.
+
+"Aku menulis surat untukmu setiap hari," kata Sarah sambil mengeluarkan sebuah kotak kecil dari tasnya. "Tapi aku tidak pernah mengirimkannya karena takut kamu sudah melupakanku."
+
+Andi mengambil kotak itu dengan tangan bergetar. Di dalamnya, puluhan surat dengan tulisan tangan Sarah yang familiar. Setiap surat berisi kerinduan, harapan, dan cinta yang tak pernah pudar.
+
+"Bagaimana mungkin aku melupakanmu?" bisik Andi. "Kamu adalah bagian dari jiwaku yang hilang."
+
+Mereka memutuskan untuk memulai semuanya dari awal, tapi kali ini dengan tekad yang lebih kuat. Tidak ada lagi yang bisa memisahkan mereka. Cinta mereka telah melewati ujian waktu dan jarak, dan kini saatnya untuk menulis babak baru dalam kisah hidup mereka.`,
       excerpt: 'Sebuah perjalanan emosional seorang pemuda yang menemukan makna kehidupan di tengah badai yang menghadang. Kisah tentang cinta, persahabatan, dan pengorbanan yang akan menyentuh hati pembaca.'
+    },
+    '2': {
+      title: 'Secangkir Kopi dan Seribu Makna',
+      type: 'cerpen',
+      publishDate: '8 November 2024',
+      views: 892,
+      likes: 67,
+      fullContent: `Sore itu, seperti biasa, Pak Budi duduk di teras kedai kopinya yang sederhana. Kedai kecil di pinggir jalan yang telah berusia lebih dari dua puluh tahun itu menjadi saksi bisu berbagai kisah hidup yang datang dan pergi.
+
+"Satu kopi tubruk, Pak," kata seorang pemuda yang baru saja datang.
+
+Pak Budi tersenyum ramah sambil menyiapkan pesanan. Ia memperhatikan wajah lelah pemuda itu. Ada sesuatu yang familiar dari tatapan matanya - tatapan seseorang yang sedang berjuang dengan hidupnya.
+
+"Pertama kali ke sini?" tanya Pak Budi sambil menyajikan secangkir kopi hangat.
+
+"Iya, Pak. Saya baru pindah ke daerah sini," jawab pemuda itu sambil duduk di kursi plastik yang sudah agak kusam.
+
+"Namanya siapa, Nak?"
+
+"Reza, Pak."
+
+Pak Budi mengangguk sambil ikut duduk di sebelah Reza. "Bapak di sini sudah dua puluh tahun, Nak. Sudah banyak cerita yang Bapak dengar dari para pelanggan. Kadang orang datang ke sini bukan hanya untuk minum kopi, tapi juga untuk mencari ketenangan."
+
+Reza mengangguk sambil menyeruput kopinya. Rasa pahit bercampur manis itu seolah merefleksikan hidupnya saat ini.
+
+"Bapak tahu, Nak, setiap cangkir kopi itu punya cerita. Seperti hidup kita, kadang pahit, kadang manis, tapi selalu punya makna," kata Pak Budi bijak.
+
+"Saya baru saja kehilangan pekerjaan, Pak," akhirnya Reza bercerita. "Sudah berminggu-minggu melamar ke mana-mana, tapi belum ada yang merespons."
+
+Pak Budi tersenyum hangat. "Dulu, sebelum buka kedai ini, Bapak juga pernah mengalami masa-masa sulit. Dikeluarkan dari pekerjaan, istri sakit, anak masih kecil-kecil. Rasanya dunia seperti runtuh."
+
+"Lalu bagaimana Bapak bisa bertahan?"
+
+"Dengan secangkir kopi," jawab Pak Budi sambil tertawa kecil. "Bapak sadar, hidup ini seperti proses menyeduh kopi. Butuh waktu, kesabaran, dan takaran yang tepat. Kalau terburu-buru, hasilnya pasti tidak sempurna."
+
+Reza mulai memahami maksud Pak Budi. "Jadi, saya harus bersabar?"
+
+"Bukan hanya sabar, Nak. Tapi juga terus berusaha sambil menikmati prosesnya. Seperti kopi ini, nikmatnya bukan hanya pada hasil akhir, tapi juga pada aromanya, hangatnya, dan momen kebersamaan seperti ini."
+
+Sejak hari itu, Reza menjadi pelanggan tetap kedai Pak Budi. Setiap sore, ia datang untuk minum kopi sambil berbagi cerita. Pak Budi selalu mendengarkan dengan sabar dan memberikan nasihat-nasihat sederhana namun bermakna.
+
+Hingga suatu hari, Reza datang dengan wajah berseri-seri.
+
+"Pak Budi, saya dapat pekerjaan!"
+
+"Alhamdulillah, Nak. Bapak turut senang."
+
+"Terima kasih, Pak. Nasihat Bapak tentang kopi itu yang membuat saya tidak menyerah."
+
+Pak Budi tersenyum sambil menyajikan secangkir kopi untuk Reza. "Ingat, Nak, hidup akan terus memberikan tantangan. Tapi selama kita punya tempat untuk pulang dan secangkir kopi untuk merenung, semuanya pasti akan baik-baik saja."
+
+Mereka menikmati kopi itu dalam keheningan yang hangat, ditemani suara sore yang mulai beranjak malam. Di dalam secangkir kopi sederhana itu, tersimpan ribuan makna tentang kehidupan, persahabatan, dan harapan.`,
+      excerpt: 'Dalam secangkir kopi yang sederhana, tersimpan kenangan indah yang tak pernah pudar. Sebuah cerpen yang mengisahkan tentang nostalgia dan kehangatan hubungan manusia.'
     },
     // Add more books as needed
   };
@@ -52,8 +114,8 @@ Hujan berhenti. Langit mulai cerah. Dan cinta mereka, sekali lagi, menemukan jal
         <Header />
         <div className="pt-32 pb-20 text-center">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Karya Tidak Ditemukan</h1>
-          <Link to="/">
-            <Button>Kembali ke Beranda</Button>
+          <Link to="/works">
+            <Button>Lihat Semua Karya</Button>
           </Link>
         </div>
         <Footer />
@@ -69,9 +131,9 @@ Hujan berhenti. Langit mulai cerah. Dan cinta mereka, sekali lagi, menemukan jal
       <section className="pt-32 pb-12 bg-gradient-primary">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <Link to="/" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors duration-300">
+            <Link to="/works" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors duration-300">
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Kembali ke Beranda
+              Kembali ke Karya
             </Link>
             
             <div className="text-center text-white">
