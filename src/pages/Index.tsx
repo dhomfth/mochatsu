@@ -64,7 +64,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-amber-50">
       <Header />
       <Hero />
       
@@ -73,9 +73,9 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              <span className="hero-text">Koleksi Karya</span>
+              <span className="text-amber-800">Koleksi Karya</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-amber-700 max-w-3xl mx-auto">
               Jelajahi dunia imajinasi melalui kumpulan novel dan cerpen yang telah ditulis 
               dengan penuh passion dan dedikasi untuk para pembaca
             </p>
@@ -92,7 +92,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-primary">
+      <section className="py-20 bg-gradient-to-br from-amber-600 to-amber-800">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-playfair font-bold text-white mb-6">
             Bergabunglah dalam Perjalanan Literasi
@@ -106,7 +106,7 @@ const Index = () => {
               href="https://www.wattpad.com/user/Mochatsu" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-white text-purple-600 hover:bg-yellow-300 hover:text-purple-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
+              className="bg-white text-amber-800 hover:bg-amber-100 hover:text-amber-900 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
             >
               Follow di Wattpad
             </a>

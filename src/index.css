@@ -101,7 +101,7 @@
   }
 
   .hero-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #d97706 0%, #92400e 50%, #451a03 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -113,5 +113,11 @@
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .glass-effect-brown {
+    background: rgba(254, 243, 199, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 119, 6, 0.2);
   }
 }

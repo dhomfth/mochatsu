@@ -1,9 +1,12 @@
 
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookCard from '@/components/BookCard';
 
 const Works = () => {
+  const [activeFilter, setActiveFilter] = useState<'all' | 'novel' | 'cerpen'>('all');
+
   // Data lengkap untuk semua karya tulis
   const books = [
     {
@@ -98,12 +101,18 @@ const Works = () => {
     }
   ];
 
+  // Filter books based on active filter
+  const filteredBooks = books.filter(book => {
+    if (activeFilter === 'all') return true;
+    return book.type === activeFilter;
+  });
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-amber-50">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-primary">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-amber-600 to-amber-800">
         <div className="container mx-auto px-6">
           <div className="text-center text-white">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
@@ -119,25 +128,46 @@ const Works = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-white border-b">
+      <section className="py-8 bg-white border-b border-amber-200">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
-              <span className="text-gray-700 font-medium">Filter berdasarkan:</span>
+              <span className="text-amber-800 font-medium">Filter berdasarkan:</span>
               <div className="flex space-x-2">
-                <button className="px-4 py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-200 transition-colors duration-300">
+                <button 
+                  onClick={() => setActiveFilter('all')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                    activeFilter === 'all' 
+                      ? 'bg-amber-600 text-white' 
+                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                  }`}
+                >
                   Semua
                 </button>
-                <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-300">
+                <button 
+                  onClick={() => setActiveFilter('novel')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                    activeFilter === 'novel' 
+                      ? 'bg-amber-600 text-white' 
+                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                  }`}
+                >
                   Novel
                 </button>
-                <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-300">
+                <button 
+                  onClick={() => setActiveFilter('cerpen')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                    activeFilter === 'cerpen' 
+                      ? 'bg-amber-600 text-white' 
+                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                  }`}
+                >
                   Cerpen
                 </button>
               </div>
             </div>
-            <div className="text-gray-600">
-              <span className="font-medium">{books.length}</span> karya ditemukan
+            <div className="text-amber-700">
+              <span className="font-medium">{filteredBooks.length}</span> karya ditemukan
             </div>
           </div>
         </div>
@@ -147,7 +177,7 @@ const Works = () => {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {books.map((book) => (
+            {filteredBooks.map((book) => (
               <div key={book.id} className="animate-fade-in">
                 <BookCard {...book} />
               </div>

@@ -69,9 +69,9 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-				'gradient-secondary': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-				'gradient-hero': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+				'gradient-primary': 'linear-gradient(135deg, #d97706 0%, #92400e 100%)',
+				'gradient-secondary': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+				'gradient-hero': 'linear-gradient(135deg, #d97706 0%, #92400e 50%, #451a03 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
