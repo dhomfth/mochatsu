@@ -5,7 +5,7 @@ import BookCard from '@/components/BookCard';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Sample data untuk karya tulis
+  // Sample data untuk karya tulis dengan link Wattpad
   const books = [
     {
       id: '1',
@@ -14,7 +14,8 @@ const Index = () => {
       excerpt: 'Sebuah perjalanan emosional seorang pemuda yang menemukan makna kehidupan di tengah badai yang menghadang. Kisah tentang cinta, persahabatan, dan pengorbanan yang akan menyentuh hati pembaca.',
       publishDate: '15 Nov 2024',
       views: 1250,
-      likes: 89
+      likes: 89,
+      wattpadUrl: 'https://www.wattpad.com/story/jejak-langkah-di-musim-hujan'
     },
     {
       id: '2',
@@ -23,7 +24,8 @@ const Index = () => {
       excerpt: 'Dalam secangkir kopi yang sederhana, tersimpan kenangan indah yang tak pernah pudar. Sebuah cerpen yang mengisahkan tentang nostalgia dan kehangatan hubungan manusia.',
       publishDate: '8 Nov 2024',
       views: 892,
-      likes: 67
+      likes: 67,
+      wattpadUrl: 'https://www.wattpad.com/story/secangkir-kopi-dan-seribu-makna'
     },
     {
       id: '3',
@@ -32,7 +34,8 @@ const Index = () => {
       excerpt: 'Ketika harapan hampir sirna, datanglah cahaya yang memberikan kekuatan baru. Novel yang mengangkat tema tentang ketabahan dan optimisme dalam menghadapi ujian hidup.',
       publishDate: '2 Nov 2024',
       views: 1580,
-      likes: 124
+      likes: 124,
+      wattpadUrl: 'https://www.wattpad.com/story/mentari-pagi-di-ujung-senja'
     },
     {
       id: '4',
@@ -41,7 +44,8 @@ const Index = () => {
       excerpt: 'Percakapan sunyi di malam yang kelam, ketika jiwa mencari jawaban atas pertanyaan-pertanyaan hidup. Sebuah cerpen filosofis yang mengajak pembaca untuk merenung.',
       publishDate: '28 Okt 2024',
       views: 756,
-      likes: 45
+      likes: 45,
+      wattpadUrl: 'https://www.wattpad.com/story/dialog-dengan-bintang'
     },
     {
       id: '5',
@@ -50,7 +54,8 @@ const Index = () => {
       excerpt: 'Sebuah rumah tua menyimpan sejuta cerita keluarga yang penuh warna. Novel keluarga yang menghangatkan hati dengan pesan tentang nilai-nilai tradisional dan cinta kasih.',
       publishDate: '20 Okt 2024',
       views: 2134,
-      likes: 178
+      likes: 178,
+      wattpadUrl: 'https://www.wattpad.com/story/rumah-di-ujung-pelangi'
     },
     {
       id: '6',
@@ -59,7 +64,8 @@ const Index = () => {
       excerpt: 'Apa yang akan kita katakan pada diri kita di masa depan? Cerpen yang mengajak pembaca untuk merenungkan perjalanan hidup dan impian yang belum terwujud.',
       publishDate: '15 Okt 2024',
       views: 1023,
-      likes: 82
+      likes: 82,
+      wattpadUrl: 'https://www.wattpad.com/story/surat-untuk-masa-depan'
     }
   ];
 
@@ -103,7 +109,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://www.wattpad.com/user/Mochatsu" 
+              href="https://www.wattpad.com/user/Mochatsuu" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-white text-amber-800 hover:bg-amber-100 hover:text-amber-900 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"

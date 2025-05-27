@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Eye, Heart } from 'lucide-react';
+import { Calendar, Eye, Heart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface BookCardProps {
@@ -13,9 +13,19 @@ interface BookCardProps {
   views: number;
   likes: number;
   coverImage?: string;
+  wattpadUrl?: string;
 }
 
-const BookCard = ({ id, title, type, excerpt, publishDate, views, likes, coverImage }: BookCardProps) => {
+const BookCard = ({ id, title, type, excerpt, publishDate, views, likes, coverImage, wattpadUrl }: BookCardProps) => {
+  const handleWattpadClick = () => {
+    if (wattpadUrl) {
+      window.open(wattpadUrl, '_blank');
+    } else {
+      // Default Wattpad profile if specific story URL not available
+      window.open('https://www.wattpad.com/user/Mochatsuu', '_blank');
+    }
+  };
+
   return (
     <Card className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden bg-white border-amber-200">
       <div className="relative overflow-hidden">
@@ -69,11 +79,21 @@ const BookCard = ({ id, title, type, excerpt, publishDate, views, likes, coverIm
           </div>
         </div>
         
-        <Link to={`/book/${id}`}>
-          <Button className="w-full bg-gradient-to-br from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 transition-all duration-300">
-            Baca Selengkapnya
+        <div className="space-y-2">
+          <Link to={`/book/${id}`}>
+            <Button className="w-full bg-gradient-to-br from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 transition-all duration-300">
+              Baca Preview
+            </Button>
+          </Link>
+          <Button 
+            variant="outline" 
+            className="w-full border-amber-200 text-amber-700 hover:bg-amber-50 transition-all duration-300"
+            onClick={handleWattpadClick}
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            Baca Selengkapnya di Wattpad
           </Button>
-        </Link>
+        </div>
       </CardContent>
     </Card>
   );
