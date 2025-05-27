@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button';
-import { ArrowDown, BookOpen, PenTool } from 'lucide-react';
+import { ArrowDown, BookOpen, PenTool, Star, Users, Award } from 'lucide-react';
 
 const Hero = () => {
   const scrollToWorks = () => {
@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-hero">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden purple-blue-gradient">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 animate-float">
@@ -22,6 +22,9 @@ const Hero = () => {
         </div>
         <div className="absolute bottom-32 left-1/4 animate-float" style={{ animationDelay: '2s' }}>
           <BookOpen className="h-24 w-24 text-white" />
+        </div>
+        <div className="absolute top-1/3 right-1/4 animate-float" style={{ animationDelay: '3s' }}>
+          <Star className="h-12 w-12 text-white" />
         </div>
       </div>
 
@@ -37,17 +40,42 @@ const Hero = () => {
             petualangan tak terlupakan melalui kata-kata yang penuh makna
           </p>
 
+          {/* Stats Section */}
+          <div className="flex flex-wrap justify-center gap-8 mb-8">
+            <div className="flex items-center space-x-2 text-white/80">
+              <BookOpen className="h-6 w-6" />
+              <span className="text-lg font-semibold">15+ Karya</span>
+            </div>
+            <div className="flex items-center space-x-2 text-white/80">
+              <Users className="h-6 w-6" />
+              <span className="text-lg font-semibold">1000+ Pembaca</span>
+            </div>
+            <div className="flex items-center space-x-2 text-white/80">
+              <Award className="h-6 w-6" />
+              <span className="text-lg font-semibold">Best Seller</span>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
-              className="bg-white text-purple-600 hover:bg-yellow-300 hover:text-purple-700 transition-all duration-300 px-8 py-3 text-lg font-semibold"
+              className="bg-white text-purple-600 hover:bg-yellow-300 hover:text-purple-700 transition-all duration-300 px-8 py-3 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105"
               onClick={scrollToWorks}
             >
               Jelajahi Karya
             </Button>
-            <div className="text-white/80 text-sm">
-              <p>Follow @Mochatsu di Wattpad</p>
-            </div>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300 px-8 py-3 text-lg font-semibold"
+              onClick={() => window.open('https://www.wattpad.com/user/Mochatsuu', '_blank')}
+            >
+              Follow @Mochatsuu
+            </Button>
+          </div>
+
+          <div className="text-white/80 text-sm mb-8">
+            <p>✨ Karya terbaru setiap minggu di Wattpad</p>
           </div>
 
           <div className="animate-bounce">

@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, BookOpen, Home, User, Mail, Book, Search, Moon, Sun } from 'lucide-react';
+import { Menu, X, BookOpen, Home, User, Mail, Book, Search, Moon, Sun, Bell, Settings } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
@@ -41,10 +41,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <BookOpen className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-all duration-300 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-lg group-hover:bg-purple-700/30 transition-all duration-300"></div>
+              <BookOpen className="h-8 w-8 text-purple-600 group-hover:text-indigo-600 transition-all duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-lg group-hover:bg-indigo-600/30 transition-all duration-300"></div>
             </div>
-            <span className="text-2xl font-playfair font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-playfair font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
               Mochatsu
             </span>
           </Link>
@@ -57,8 +57,8 @@ const Header = () => {
                 to={item.path}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                   isActive(item.path)
-                    ? 'bg-purple-100 text-purple-700 shadow-md'
-                    : 'text-purple-600 hover:bg-purple-50 hover:text-purple-700 hover:shadow-sm'
+                    ? 'bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 shadow-md border border-purple-200'
+                    : 'text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:text-purple-700 hover:shadow-sm'
                 }`}
               >
                 <item.icon className="h-4 w-4" />
@@ -74,9 +74,27 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={toggleSearch}
-              className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-all duration-300"
+              className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all duration-300"
             >
               <Search className="h-5 w-5" />
+            </Button>
+
+            {/* Notifications */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all duration-300"
+            >
+              <Bell className="h-5 w-5" />
+            </Button>
+
+            {/* Settings */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all duration-300"
+            >
+              <Settings className="h-5 w-5" />
             </Button>
 
             {/* Dark Mode Toggle */}
@@ -84,7 +102,7 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-all duration-300"
+              className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all duration-300"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -92,7 +110,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-purple-600 hover:text-purple-700 transition-colors duration-300 p-2 rounded-lg hover:bg-purple-50"
+            className="md:hidden text-purple-600 hover:text-indigo-600 transition-colors duration-300 p-2 rounded-lg hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50"
             onClick={toggleMenu}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -125,8 +143,8 @@ const Header = () => {
                   to={item.path}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                     isActive(item.path)
-                      ? 'bg-purple-100 text-purple-700 shadow-md'
-                      : 'text-purple-600 hover:bg-purple-50 hover:text-purple-700'
+                      ? 'bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 shadow-md'
+                      : 'text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:text-purple-700'
                   }`}
                   onClick={toggleMenu}
                 >
@@ -141,7 +159,7 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={toggleSearch}
-                  className="text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+                  className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50"
                 >
                   <Search className="h-4 w-4 mr-2" />
                   Pencarian
@@ -150,7 +168,7 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={toggleDarkMode}
-                  className="text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+                  className="text-purple-600 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50"
                 >
                   {isDarkMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
                   {isDarkMode ? 'Terang' : 'Gelap'}
