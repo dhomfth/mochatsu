@@ -108,11 +108,11 @@ const Works = () => {
   });
 
   return (
-    <div className="min-h-screen bg-amber-50">
+    <div className="min-h-screen bg-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-amber-600 to-amber-800">
+      <section className="pt-32 pb-16 purple-blue-gradient">
         <div className="container mx-auto px-6">
           <div className="text-center text-white">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
@@ -128,18 +128,18 @@ const Works = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-white border-b border-amber-200">
+      <section className="py-8 bg-purple-50 border-b border-purple-200">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
-              <span className="text-amber-800 font-medium">Filter berdasarkan:</span>
+              <span className="text-purple-800 font-medium">Filter berdasarkan:</span>
               <div className="flex space-x-2">
                 <button 
                   onClick={() => setActiveFilter('all')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                     activeFilter === 'all' 
-                      ? 'bg-amber-600 text-white' 
-                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                      ? 'bg-purple-600 text-white shadow-lg' 
+                      : 'bg-white text-purple-700 hover:bg-purple-100 border border-purple-200'
                   }`}
                 >
                   Semua
@@ -148,8 +148,8 @@ const Works = () => {
                   onClick={() => setActiveFilter('novel')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                     activeFilter === 'novel' 
-                      ? 'bg-amber-600 text-white' 
-                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                      ? 'bg-purple-600 text-white shadow-lg' 
+                      : 'bg-white text-purple-700 hover:bg-purple-100 border border-purple-200'
                   }`}
                 >
                   Novel
@@ -158,15 +158,15 @@ const Works = () => {
                   onClick={() => setActiveFilter('cerpen')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                     activeFilter === 'cerpen' 
-                      ? 'bg-amber-600 text-white' 
-                      : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                      ? 'bg-purple-600 text-white shadow-lg' 
+                      : 'bg-white text-purple-700 hover:bg-purple-100 border border-purple-200'
                   }`}
                 >
                   Cerpen
                 </button>
               </div>
             </div>
-            <div className="text-amber-700">
+            <div className="text-purple-700 bg-white px-4 py-2 rounded-lg border border-purple-200">
               <span className="font-medium">{filteredBooks.length}</span> karya ditemukan
             </div>
           </div>
@@ -174,7 +174,7 @@ const Works = () => {
       </section>
 
       {/* Works Grid */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-br from-white via-purple-50 to-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBooks.map((book) => (

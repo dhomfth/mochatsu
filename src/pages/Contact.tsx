@@ -1,17 +1,81 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ChatPenulis from '@/components/ChatPenulis';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, MapPin, MessageCircle, Send, Linkedin, Calendar, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Send, Linkedin, Calendar, Clock, Instagram } from 'lucide-react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
+
+interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  category: string;
+  message: string;
+  timestamp: string;
+  response?: string;
+  responseTimestamp?: string;
+}
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [contactMessages, setContactMessages] = useState<ContactMessage[]>([]);
+  const [responseText, setResponseText] = useState<{ [key: string]: string }>({});
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted');
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    const newMessage: ContactMessage = {
+      id: Date.now().toString(),
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      subject: formData.get('subject') as string,
+      category: formData.get('category') as string,
+      message: formData.get('message') as string,
+      timestamp: new Date().toLocaleString('id-ID')
+    };
+
+    setContactMessages([newMessage, ...contactMessages]);
+    (e.target as HTMLFormElement).reset();
+    
+    toast({
+      title: "Berhasil!",
+      description: "Pesan Anda telah terkirim"
+    });
+  };
+
+  const handleSendResponse = (messageId: string) => {
+    const response = responseText[messageId];
+    if (!response?.trim()) {
+      toast({
+        title: "Peringatan",
+        description: "Mohon isi respon terlebih dahulu",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setContactMessages(contactMessages.map(msg => 
+      msg.id === messageId 
+        ? { 
+            ...msg, 
+            response,
+            responseTimestamp: new Date().toLocaleString('id-ID')
+          }
+        : msg
+    ));
+
+    setResponseText(prev => ({ ...prev, [messageId]: '' }));
+    
+    toast({
+      title: "Berhasil!",
+      description: "Respon telah disimpan dan dikirim"
+    });
   };
 
   return (
@@ -82,6 +146,27 @@ const Contact = () => {
                             className="text-green-600 hover:text-emerald-600 transition-colors duration-300"
                           >
                             +62 895 1027 5568
+                          </a>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="hover:shadow-lg transition-all duration-300 card-hover purple-blue-card">
+                    <CardContent className="p-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="bg-gradient-to-r from-pink-100 to-rose-100 p-3 rounded-full">
+                          <Instagram className="h-6 w-6 text-pink-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-purple-800">Instagram</h3>
+                          <a 
+                            href="https://instagram.com/dhomfth" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-pink-600 hover:text-rose-600 transition-colors duration-300"
+                          >
+                            @dhomfth
                           </a>
                         </div>
                       </div>
@@ -192,6 +277,7 @@ const Contact = () => {
                           </label>
                           <Input 
                             type="text" 
+                            name="name"
                             placeholder="Masukkan nama Anda"
                             className="w-full border-purple-200 focus:border-purple-500 focus:ring-purple-500/20"
                             required
@@ -203,6 +289,7 @@ const Contact = () => {
                           </label>
                           <Input 
                             type="email" 
+                            name="email"
                             placeholder="nama@email.com"
                             className="w-full border-purple-200 focus:border-purple-500 focus:ring-purple-500/20"
                             required
@@ -216,6 +303,7 @@ const Contact = () => {
                         </label>
                         <Input 
                           type="text" 
+                          name="subject"
                           placeholder="Subjek pesan"
                           className="w-full border-purple-200 focus:border-purple-500 focus:ring-purple-500/20"
                           required
@@ -226,7 +314,10 @@ const Contact = () => {
                         <label className="block text-sm font-medium text-purple-700 mb-2">
                           Kategori
                         </label>
-                        <select className="w-full px-3 py-2 border border-purple-200 rounded-md focus:border-purple-500 focus:ring-purple-500/20">
+                        <select 
+                          name="category"
+                          className="w-full px-3 py-2 border border-purple-200 rounded-md focus:border-purple-500 focus:ring-purple-500/20"
+                        >
                           <option value="">Pilih kategori</option>
                           <option value="feedback">Feedback Karya</option>
                           <option value="collaboration">Kolaborasi</option>
@@ -240,6 +331,7 @@ const Contact = () => {
                           Pesan
                         </label>
                         <Textarea 
+                          name="message"
                           placeholder="Tuliskan pesan Anda di sini..."
                           className="w-full h-32 resize-none border-purple-200 focus:border-purple-500 focus:ring-purple-500/20"
                           required
@@ -259,6 +351,69 @@ const Contact = () => {
                 </Card>
               </div>
             </div>
+
+            {/* Chat with Author Section */}
+            <div className="mt-16">
+              <ChatPenulis />
+            </div>
+
+            {/* Contact Messages Management */}
+            {contactMessages.length > 0 && (
+              <div className="mt-16">
+                <Card className="shadow-xl border-purple-200">
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-playfair font-bold mb-6 text-purple-800">Pesan Masuk</h3>
+                    <div className="space-y-6">
+                      {contactMessages.map((msg) => (
+                        <div key={msg.id} className="space-y-4">
+                          <div className="bg-white p-6 rounded-xl border border-purple-100 shadow-sm">
+                            <div className="mb-4">
+                              <div className="flex justify-between items-start mb-2">
+                                <h4 className="font-semibold text-purple-800">{msg.name}</h4>
+                                <span className="text-sm text-purple-600">{msg.timestamp}</span>
+                              </div>
+                              <p className="text-sm text-gray-600 mb-2">{msg.email} • {msg.category}</p>
+                              <h5 className="font-medium text-gray-800 mb-2">{msg.subject}</h5>
+                              <p className="text-gray-700">{msg.message}</p>
+                            </div>
+                          </div>
+
+                          {msg.response ? (
+                            <div className="ml-8 bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-xl border border-purple-200">
+                              <div className="flex justify-between items-start mb-2">
+                                <h6 className="font-semibold text-purple-800">Respon Anda</h6>
+                                <span className="text-sm text-purple-600">{msg.responseTimestamp}</span>
+                              </div>
+                              <p className="text-gray-700">{msg.response}</p>
+                            </div>
+                          ) : (
+                            <div className="ml-8 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                              <div className="space-y-3">
+                                <Textarea
+                                  placeholder="Tulis respon untuk pesan ini..."
+                                  value={responseText[msg.id] || ''}
+                                  onChange={(e) => setResponseText(prev => ({ ...prev, [msg.id]: e.target.value }))}
+                                  className="border-purple-200 focus:border-purple-500"
+                                  rows={3}
+                                />
+                                <Button 
+                                  onClick={() => handleSendResponse(msg.id)}
+                                  size="sm"
+                                  className="bg-purple-600 hover:bg-purple-700"
+                                >
+                                  <Send className="h-4 w-4 mr-2" />
+                                  Kirim Respon
+                                </Button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
           </div>
         </div>
       </section>
